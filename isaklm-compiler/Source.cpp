@@ -2,7 +2,7 @@
 
 int main()
 {
-	std::vector<Token> tokens = lexer("tictactoe.txt");
+	std::vector<Token> tokens = lexer("tic_tac_toe.txt");
 
 	/*for (Token token : tokens)
 	{
@@ -24,11 +24,9 @@ int main()
 	{
 		print_tree(parse_tree, 0);
 		
-		std::cout << "\n\nC++ GENERATED CODE HERE:\n\n";
+		std::cout << "\n\nGENERATED C++ CODE HERE:\n\n";
 
-		std::string generated_code = output_code(parse_tree);
-
-		std::cout << generated_code << '\n';
+		std::cout << output_code(parse_tree);
 	}
 
 

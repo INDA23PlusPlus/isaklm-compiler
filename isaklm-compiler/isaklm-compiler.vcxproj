@@ -136,8 +136,11 @@
     <ClInclude Include="parser.h" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="tictactoe.txt" />
+    <Text Include="tic_tac_toe.txt" />
     <Text Include="fibonacci.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="grammar.bnf" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

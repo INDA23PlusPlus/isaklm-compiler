@@ -1,0 +1,77 @@
+<statements> ::= <end_of_statements> | <statement> <statements>
+<statement> ::= <variable_declaration> | <array_declaration> | <function_definition> | <variable_assignment> | <array_assignment> | <iteration> | <if_statement> | <exit> | <chain_scope> | <break> | <function_call> | <input_call> | <print_call> | <function_callback>
+
+<variable_declaration> ::= <identifier> <colon_equals> <arithmetic_expression>
+<array_declaration> ::= <identifier> <colon> <open_bracket> <constant> <close_bracket>
+<function_definition> ::= <function_header> <open_scope> <statements> <close_scope>
+<function_header> ::= <define> <identifier> <open> <parameters> <close>
+<parameters> ::= <parameter> | <parameter> <semicolon> <parameters>
+<parameter> ::= <identifier> <colon> <int> | <identifier> <colon> <vec>
+<function_callback> ::= <call_back> <arithmetic_expression>
+
+<variable_assignment> ::= <identifier> <assign> <arithmetic_expression>
+<array_assignment> ::= <array_access> <assign> <arithmetic_expression>
+
+<array_access> ::= <identifier> <open_bracket> <arithmetic_expression> <close_bracket>
+<function_call> ::= <identifier> <open> <arguments> <close>
+<arguments> ::= <arithmetic_expression> <new_argument>
+<new_argument> ::= <semicolon> | <semicolon> <arithmetic_expression> <new_argument>
+
+<arithmetic_expression> ::= <numeric> | <open> <arithmetic_expression> <arithmetic_operator> <arithmetic_expression> <close>
+<numeric> ::= <constant> | <array_access> | <function_call> | <identifier> | <input_call>
+
+<arithmetic_operator> ::= <plus> | <minus> | <multiply> | <divide> | <modulo>
+
+<iteration> ::= <loop> <open_scope> <statements> <close_scope> | <while> <open_scope> <statements> <close_scope> <boolean_expression> <open_scope> <statements> <close_scope> | <while> <boolean_expression> <open_scope> <statements> <close_scope>
+<if_statement> ::= <if> <boolean_expression> <open_scope> <statements> <close_scope>
+
+<boolean_expression> ::= <not> <open> <boolean_expression> <close> | <open> <boolean_expression> <logical_operator> <boolean_expression> <close> | <arithmetic_expression> <comparison_operator> <arithmetic_expression>
+<logical_operator> ::= <and> | <or>
+<comparison_operator> ::= <equals> | <not_equals> | <greater> | <less> | <greater_or_equal> | <less_or_equal>
+
+<chain_scope> ::= <chain> <open_scope> <statements> <close_scope>
+
+<input_call> ::= <input> <open> <string> <close>
+<print_call> ::= <print> <open> <string> <close> | <print> <open> <arithmetic_expression> <close>
+
+<identifier> ::= "some_identifier"
+<constant> ::= "some_constant"
+<int> ::= "int"
+<vec> ::= "vec"
+<define> ::= "def"
+<call_back> ::= "return"
+<colon> ::= ":"
+<semicolon> ::= ";"
+<comma> ::= ","
+<colon_equals> ::= ":="
+<equals> ::= "="
+<not_equals> ::= "!="
+<greater> ::= ">"
+<less> ::= "<"
+<greater_or_equal> ::= ">="
+<less_or_equal> ::= "<="
+<assign> ::= "->"
+<plus> ::= "+"
+<minus> ::= "-"
+<multiply> ::= "*"
+<divide> ::= "/"
+<modulo> ::= "%"
+<and> ::= "&"
+<or> ::= "|"
+<not> ::= "!"
+<open_scope> ::= "{"
+<close_scope> ::= "}"
+<open> ::= "("
+<close> ::= ")"
+<open_bracket> ::= "["
+<close_bracket> ::= "]"
+<while> ::= "while"
+<loop> ::= "loop"
+<if> ::= "if"
+<exit> ::= "exit"
+<chain> ::= "chain"
+<break> ::= "break"
+<input> ::= "input"
+<print> ::= "print"
+<string> ::= "some_string"
+<end_of_statements> ::= "end_of_statements"

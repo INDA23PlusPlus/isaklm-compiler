@@ -1,0 +1,149 @@
+board : [9]
+
+while { i := 0 } i < 9
+{
+	board[i] -> 0
+
+	i -> (i + 1)
+}
+
+
+def select_position(board : vec)
+{
+	loop
+	{
+		board_position := input("Enter position (1 - 9): ")
+
+		if ((board_position >= 1 & board_position <= 9) & board[(board_position - 1)] = 0)
+		{
+			return (board_position - 1)
+		}
+
+		print("Invalid position.\n")
+	}
+}
+
+def array_index(x : int; y : int)
+{
+	return ((y * 3) + x)
+}
+
+def draw_board(board : vec)
+{
+	while { y := 0 } y < 3
+	{
+		while { x := 0 } x < 3
+		{
+			index := array_index(x; y;)
+
+			square := board[index]
+
+			if square = 0
+			{
+				print((index + 1))
+				print("\t")
+			}
+			if square = 1
+			{
+				print("X\t")
+			}
+			if square = 2
+			{
+				print("O\t")
+			}
+
+			x -> (x + 1)
+		}
+
+		print("\n\n")
+
+		y -> (y + 1)
+	}
+
+	return 0
+}
+
+def check_for_winner(board : vec)
+{
+	def match_row(board : vec; x1 : int; y1 : int; x2 : int; y2 : int; x3 : int; y3 : int)
+	{
+		square1 := board[array_index(x1; y1;)]
+		square2 := board[array_index(x2; y2;)]
+		square3 := board[array_index(x3; y3;)]
+
+		if ((square1 != 0 & square2 = square1) & square3 = square1)
+		{
+			return square1
+		}
+
+		return 0
+	}
+
+	match := 0
+
+	while { i := 0 } i < 3
+	{
+		match -> (match + (match_row(board; 0; i; 1; i; 2; i;) + match_row(board; i; 0; i; 1; i; 2;)))
+
+		i -> (i + 1)
+	}
+
+	match -> (match + (match_row(board; 0; 0; 1; 1; 2; 2;) + match_row(board; 0; 2; 1; 1; 2; 0;)))
+
+	return match
+}
+
+def check_for_draw(board : vec)
+{
+	while { i := 0 } i < 9
+	{
+		if board[i] = 0
+		{
+			return 0
+		}
+
+		i -> (i + 1)
+	}
+
+	return 1
+}
+
+
+player := 1
+
+loop
+{
+	draw_board(board;)
+
+	winner := check_for_winner(board;)
+
+	if winner = 1
+	{
+		print("X won!")
+		exit
+	}
+	if winner = 2
+	{
+		print("O won!")
+		exit
+	}
+
+	if check_for_draw(board;) = 1
+	{
+		print("Draw.")
+		exit
+	}
+
+	board[select_position(board;)] -> player
+
+	chain
+	{
+		if player = 1
+		{
+			player -> 2
+			break
+		}
+
+		player -> 1
+	}
+}

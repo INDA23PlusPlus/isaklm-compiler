@@ -22,7 +22,9 @@ int main()
 
 	if (parse_tokens(parse_tree, tokens))
 	{
-		//print_tree(parse_tree, 0);
+		print_tree(parse_tree, 0);
+		
+		std::cout << "\n\nC++ GENERATED CODE HERE:\n\n";
 
 		std::string generated_code = output_code(parse_tree);
 
